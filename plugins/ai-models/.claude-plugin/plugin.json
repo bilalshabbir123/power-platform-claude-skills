@@ -1,0 +1,8 @@
+{
+  "name": "ai-models",
+  "description": "Custom AI models for business apps: fine-tune with Unsloth, serve behind an OpenAI-compatible endpoint, and call it from Power Platform through a governed custom connector.",
+  "version": "1.1.0",
+  "author": { "name": "bilalshabbir123" },
+  "repository": "https://github.com/bilalshabbir123/power-platform-claude-skills",
+  "keywords": ["ai","llm","unsloth","fine-tuning","custom-connector"]
+}

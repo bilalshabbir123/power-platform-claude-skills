@@ -1,0 +1,8 @@
+{
+  "name": "sharepoint",
+  "description": "SharePoint Framework (SPFx) web parts and extensions: Heft toolchain, data access, permissions, throttling and CI releases.",
+  "version": "1.1.0",
+  "author": { "name": "bilalshabbir123" },
+  "repository": "https://github.com/bilalshabbir123/power-platform-claude-skills",
+  "keywords": ["sharepoint","spfx","microsoft-365","teams","viva"]
+}

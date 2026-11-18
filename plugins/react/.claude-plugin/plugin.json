@@ -1,0 +1,8 @@
+{
+  "name": "react",
+  "description": "React UI skills: animated components with React Bits, accessible and CSP-safe for code apps, SPFx and custom React apps.",
+  "version": "1.1.0",
+  "author": { "name": "bilalshabbir123" },
+  "repository": "https://github.com/bilalshabbir123/power-platform-claude-skills",
+  "keywords": ["react","react-bits","animation","ui","accessibility"]
+}
