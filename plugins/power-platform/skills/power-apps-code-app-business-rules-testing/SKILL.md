@@ -148,6 +148,19 @@ Before releasing a rule change, run the new rule over a **read-only export** of 
 - [ ] Manual player test done: overlays, date inputs, images, deep link
 - [ ] Release notes state any new automatic record or message
 
+## Troubleshooting
+| Symptom | Likely cause | Fix |
+|---|---|---|
+| Automatic record created at the wrong time | Rule checks the trigger (status changed) but not the precondition | Separate trigger and precondition; unit test the precondition-false case |
+| Duplicates after a rename | Duplicate check matched the title | Match a stable key (label `proj:<id>`, alternate key) |
+| Pop-up opens behind another window | Components chose their own z-index | One z-index scale in shared tokens |
+| Dates saved as year 0002 | Linked date logic ran on each keystroke | Run linked logic on blur; reject half-typed dates on save |
+| Image preview blank in the player only | `blob:` URLs blocked by CSP | Use `data:` URLs |
+| Deep link opens the home page | Read `window.location` inside the player iframe | `getContext().app.queryParams` |
+| "Today" numbers stale next morning | Today computed once on load | Recompute on focus / interval |
+
+Not sure which product applies? Start with the `power-platform-solution-builder` hub skill.
+
 ## References
 - [Microsoft] [Code apps overview](https://learn.microsoft.com/power-apps/developer/code-apps/overview)
 - [Microsoft] [Define alternate keys for a table](https://learn.microsoft.com/power-apps/maker/data-platform/define-alternate-keys-portal)

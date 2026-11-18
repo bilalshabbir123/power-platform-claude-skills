@@ -2,14 +2,26 @@
 
 ## Before creating a skill
 
-1. Read the existing skills in `skills/` and check that yours doesn't duplicate one. Extend an existing skill if the problem is the same.
-2. Copy `templates/SKILL.template.md` to `skills/<skill-name>/SKILL.md` and keep its section order.
+1. Read the existing skills in `plugins/*/skills/` and check that yours doesn't duplicate one. Extend an existing skill if the problem is the same.
+2. Put it in the plugin for its technology: `plugins/<technology>/skills/<skill-name>/SKILL.md`. Copy `templates/SKILL.template.md` and keep its section order.
 3. Add a `README.md` next to it (purpose, when to use, what's inside, related skills).
-4. The skill must be about Power Platform: Power Apps, Power Automate, Power BI, Dataverse, Power Pages, AI Builder, Copilot Studio or Microsoft 365 integrations.
+4. Add at least **two eval cases** in `plugins/<technology>/evals/<case>/` (see `docs/testing-skills.md`).
+5. Add a row to the root `README.md` table and, if it's a new kind of request, a line in the hub skill's decision table (`power-platform-solution-builder`).
+6. Scope: Microsoft Power Platform, Microsoft 365 / SharePoint, and technologies used *with* them in business apps (React UI, custom AI models). Explain the Power Platform / Microsoft 365 angle in the skill.
+
+## Adding a new technology
+
+1. Create `plugins/<technology>/.claude-plugin/plugin.json` (`name`, `description`, `version`, `author`, `repository`, `keywords`) and `plugins/<technology>/README.md`.
+2. Add the plugin to `.claude-plugin/marketplace.json` (`name`, `source: "./plugins/<technology>"`, `description`).
+3. Add skills and evals as above.
+4. Run `scripts/check.sh` and `claude plugin validate .`.
+5. Bump `version` in the plugin's `plugin.json` whenever its skills change (and the marketplace `metadata.version` for structural changes).
 
 ## Naming
 
-- Folder and `name:` are the same, lowercase kebab-case, starting with the product: `power-apps-…`, `power-automate-…`, `dataverse-…`, `power-pages-…`, `power-platform-…`, `copilot-studio-…`, `ai-builder-…`, `power-bi-…`.
+- Folder and `name:` are the same, lowercase kebab-case, starting with the product or technology: `power-apps-…`, `power-automate-…`, `dataverse-…`, `power-pages-…`, `power-platform-…`, `copilot-studio-…`, `ai-builder-…`, `power-bi-…`, `sharepoint-…`, `react-…`, or the library name (`react-bits-…`, `unsloth-…`).
+- Plugin folders are the technology: `power-platform`, `sharepoint`, `react`, `ai-models` (add new ones the same way).
+- Skill names are unique across the whole repo.
 - The name says the specific problem (`power-automate-dataverse-triggered-flows`), not a generic area (`power-automate-tips`).
 - `description:` says **what** the skill does and **when** to use it, with words people actually type (Claude uses it to decide when to load the skill). Keep it under 1,024 characters.
 
@@ -37,11 +49,14 @@ A skill is **not complete** until every box is ticked:
 - [ ] Licensing impact stated
 - [ ] Naming and repository structure followed
 - [ ] `README.md` present
+- [ ] At least two eval cases; `claude plugin eval` run and the with-skill score is not lower than without
+- [ ] `SKILL.md` under 500 lines; longer detail moved to `references/` with a note on when to read each file
+- [ ] Third-party code is linked, not copied, when its licence restricts redistribution
 - [ ] No private data (run the check below)
 
 ```bash
-# must print nothing
-grep -rniE "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}" skills | grep -v "00000000-0000-0000-0000-000000000000\|<.*>"
+# must end with "All checks passed"
+scripts/check.sh
 ```
 
 ## Commits and pull requests

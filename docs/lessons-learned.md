@@ -1,6 +1,6 @@
 # Lessons learned
 
-Real mistakes made while building and releasing an enterprise Power Apps code app (React + Dataverse + Power Automate), what caused each one, and the skill that now prevents it. Details are anonymised.
+Real mistakes made while building and releasing an enterprise Power Apps code app (React + Dataverse + Power Automate), and while building this skills repo, what caused each one, and the skill or practice that now prevents it. Details are anonymised.
 
 | # | What went wrong | Root cause | Prevented by |
 |---|---|---|---|
@@ -27,6 +27,9 @@ Real mistakes made while building and releasing an enterprise Power Apps code ap
 | 21 | An import would have switched on flows production had turned off | No snapshot of flow states before the managed upgrade | `power-platform-solution-release-alm` |
 | 22 | Risk of DEV recipients in production | Environment variable values included in the solution | `power-platform-solution-release-alm`, `power-automate-dataverse-triggered-flows` |
 | 23 | Insights card showed yesterday's numbers next morning | "Today" computed once when the page opened | `power-apps-code-app-business-rules-testing` |
+| 24 | Skill eval failed every run, even for correct answers | One grader bundled four requirements and an optional extra | [testing-skills.md](testing-skills.md): one statement per grader |
+| 25 | Skills for several technologies were hard to find and install | Flat `skills/` folder with no grouping | One plugin per technology + marketplace manifest + hub skill |
+| 26 | Same rules repeated or contradicted across products | One-size advice (e.g. canvas row limits applied to code apps) | `power-platform-solution-builder` loads only the matching reference |
 
 ## Working rules that came out of this
 
@@ -37,3 +40,5 @@ Real mistakes made while building and releasing an enterprise Power Apps code ap
 5. Check every status a script prints, and check trigger history as well as run history.
 6. Back up every field a test write touches before writing.
 7. One rule module per business rule; test the precondition-false case.
+8. Every skill ships with eval cases and is checked with and without the skill before release.
+9. Link third-party code instead of copying it when its licence restricts redistribution.

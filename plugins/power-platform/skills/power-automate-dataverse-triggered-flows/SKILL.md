@@ -136,6 +136,19 @@ description: Build reliable Power Automate cloud flows that support a code app â
 - [ ] Trigger history checked after activation (not just runs)
 - [ ] Static results off
 
+## Troubleshooting
+| Symptom | Likely cause | Fix |
+|---|---|---|
+| Flow ran twice for one change | Trigger delivered twice; no concurrency control | Concurrency 1 + claim column or alternate key |
+| Fails on long emails | Text longer than the target column | Truncate to column length minus a margin; keep full text in a memo/activity |
+| No runs for days, no failed runs either | Trigger broken (connection repointed / expired) | Check **trigger history**; alert when no runs in N hours |
+| Can't turn the flow on | Connection references owned by different accounts | One service account owns all connections |
+| Send from shared mailbox fails | Send As permission missing | Grant Send As; test a real send in TEST |
+| Step shows success but nothing sent | Static (mocked) result left enabled | Remove static results before release |
+| OData filter error from an email subject | Unvalidated ID used in a filter | Validate GUID pattern before use |
+
+Not sure which product applies? Start with the `power-platform-solution-builder` hub skill.
+
 ## References
 - [Microsoft] [Requests limits and allocations](https://learn.microsoft.com/power-platform/admin/api-request-limits-allocations)
 - [Microsoft] [Limits of automated, scheduled and instant flows](https://learn.microsoft.com/power-automate/limits-and-config)

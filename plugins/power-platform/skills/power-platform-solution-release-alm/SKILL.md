@@ -127,6 +127,17 @@ description: Release a Power Apps code app with its Dataverse tables, flows, con
 - [ ] Flow-state snapshot taken; post-import verification plan ready
 - [ ] Post-import owner tasks listed (backfills, roles, switches)
 
+## Troubleshooting
+| Symptom | Likely cause | Fix |
+|---|---|---|
+| Field never saves in production | Form not tested; column not in the solution | Release checklist: save → refresh → read back; inspect `customizations.xml` |
+| Production emails go to DEV recipients | Env var values shipped in the solution | Remove values; set PROD values via deployment settings |
+| Flows switched on/off after import | No snapshot before import | Snapshot + compare; restore intended states |
+| Import fails on custom connector | Connector in the same solution as its flows on first import | Separate connector solution imported first |
+| Can't tell what's in production | Versions not bumped | Bump solution + app version; release notes |
+
+Not sure which product applies? Start with the `power-platform-solution-builder` hub skill.
+
 ## References
 - [Microsoft] [ALM with Microsoft Power Platform](https://learn.microsoft.com/power-platform/alm/overview-alm)
 - [Microsoft] [Managed and unmanaged solutions](https://learn.microsoft.com/power-platform/alm/solution-concepts-alm)

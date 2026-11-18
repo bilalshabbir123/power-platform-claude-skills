@@ -46,5 +46,12 @@ What Power Platform solution architects, developers, automation specialists and 
 ### Deployment readiness
 - [ ]
 
+## Troubleshooting
+| Symptom | Likely cause | Fix |
+|---|---|---|
+
 ## References
 - [Microsoft] <link>
+
+<!-- Keep this file under 500 lines. Put long detail in references/<topic>.md and say here when to read it.
+     Add eval cases in plugins/<technology>/evals/<case>/prompt.md + graders/*.md (one checkable statement per grader). -->

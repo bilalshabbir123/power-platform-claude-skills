@@ -194,6 +194,19 @@ Prove it in TEST: save, refresh the page, and read the row back from Dataverse (
 - [ ] Long-text, apostrophe and empty-value cases tested
 - [ ] Failure path tested (bad value → error shown, UI rolled back)
 
+## Troubleshooting
+| Symptom | Likely cause | Fix |
+|---|---|---|
+| Totals or lists too low | Paging stopped at the default 500 rows; `$top` used | `listAll` helper that follows `skipToken`; compare with a server-side count |
+| Save says OK but the field is empty after refresh | Retry stripped "unknown" columns; column missing in this environment | Read back after save in tests; retry only for the column the error names |
+| Save fails only for long text | Text longer than the column MaxLength | Read MaxLength from metadata; trim or raise the column limit |
+| Search breaks on names like O'Brien | Unescaped quote in an OData literal | `odataString()` helper doubles single quotes |
+| Search for "Jo" also matches "Joanna" | `contains()` used where an exact match was meant | Exact compare after the server filter |
+| Two records from one click | No double-submit guard | `useRef` in-flight flag + disabled button |
+| 429 errors during bulk work | Service protection limits | Respect `Retry-After`, batch, reduce parallel calls |
+
+Not sure which product applies? Start with the `power-platform-solution-builder` hub skill.
+
 ## References
 - [Microsoft] [Service protection API limits](https://learn.microsoft.com/power-apps/developer/data-platform/api-limits)
 - [Microsoft] [Requests limits and allocations](https://learn.microsoft.com/power-platform/admin/api-request-limits-allocations)

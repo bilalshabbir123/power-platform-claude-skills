@@ -133,6 +133,17 @@ assert status in (200, 204), status
 - [ ] Non-admin test done for each role
 - [ ] Post-import: assign roles (keep base role), share app with the same groups
 
+## Troubleshooting
+| Symptom | Likely cause | Fix |
+|---|---|---|
+| A user became Admin by themselves | Normal role could create rows in the app's role table | Role table read-only for normal users; admins manage it |
+| Role script reports success but privilege still there | `RemovePrivilegeRole` called with the wrong payload; statuses not checked | Use `{Privilege:{privilegeid}}`; assert every HTTP status |
+| User gets 403 on a table the app uses | Missing privilege or depth for that table | Privilege matrix per table; test with a non-admin account |
+| User sees data the UI hides | UI-only checks | Real Dataverse privileges / column security |
+| App won't load at all for new users | Basic User role removed | Keep Basic User plus the app roles |
+
+Not sure which product applies? Start with the `power-platform-solution-builder` hub skill.
+
 ## References
 - [Microsoft] [Security concepts in Dataverse](https://learn.microsoft.com/power-platform/admin/wp-security-cds)
 - [Microsoft] [Security roles and privileges](https://learn.microsoft.com/power-platform/admin/security-roles-privileges)

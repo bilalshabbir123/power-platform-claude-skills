@@ -139,6 +139,18 @@ echo "Published $VERSION — reload the app and check the footer."
 - [ ] `dist/` contains the new version string
 - [ ] After publish: reloaded the app (no `hint=`), version matches, one changed screen checked
 
+## Troubleshooting
+| Symptom | Likely cause | Fix |
+|---|---|---|
+| Publish says success but the app shows the old version | `dist/` built before the last edit | Rebuild, `grep` the version string in `dist/assets/*.js`, then push |
+| "Multiple accounts found" / signs in as the wrong user | Cached CLI tokens for two accounts (macOS Keychain / credential store) | Log out, clear the cached token, sign in once with the right account; `pa auth status` (or the CLI's equivalent) before pushing |
+| `git`, `npm test` or the build hangs for minutes | Repo in a OneDrive/cloud folder; `node_modules` evicted to online-only | Move the repo out of the synced folder, or `npm ci` to rewrite `node_modules` locally |
+| Player keeps loading an old deployment | Play URL contains a `hint=` parameter | Use the play URL without `hint=` |
+| Data calls hang in `npm run dev` | Data bridge only answers inside the player | Dev-only timeout around SDK calls; test data paths in the player |
+| App works for you, not for a colleague | Shared with the app but no Dataverse role / licence | Assign a security role and Premium licence; share with a group |
+
+Not sure which product applies? Start with the `power-platform-solution-builder` hub skill.
+
 ## References
 - [Microsoft] [Power Apps code apps overview](https://learn.microsoft.com/power-apps/developer/code-apps/overview)
 - [Microsoft] [Power Apps CLI command reference](https://learn.microsoft.com/power-apps/developer/code-apps/reference/cli)
