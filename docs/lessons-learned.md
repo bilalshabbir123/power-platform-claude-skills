@@ -30,6 +30,7 @@ Real mistakes made while building and releasing an enterprise Power Apps code ap
 | 24 | Skill eval failed every run, even for correct answers | One grader bundled four requirements and an optional extra | [testing-skills.md](testing-skills.md): one statement per grader |
 | 25 | Skills for several technologies were hard to find and install | Flat `skills/` folder with no grouping | One plugin per technology + marketplace manifest + hub skill |
 | 26 | Same rules repeated or contradicted across products | One-size advice (e.g. canvas row limits applied to code apps) | `power-platform-solution-builder` loads only the matching reference |
+| 27 | Canvas advice said the data row limit maxes at 2,000 | Model knowledge out of date (current maximum is 10,000) and the fact sat only in a hub reference file | `power-apps-canvas-app-delegation-performance` + an eval grader that checks the current limit |
 
 ## Working rules that came out of this
 

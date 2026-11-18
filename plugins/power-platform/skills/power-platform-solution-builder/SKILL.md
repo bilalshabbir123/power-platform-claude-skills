@@ -22,7 +22,7 @@ description: One entry point for building on Microsoft Power Platform and Micros
 | Need | Choose | Read |
 |---|---|---|
 | Forms and views over Dataverse, little custom UI | Model-driven app | (Microsoft docs; not covered here) |
-| Low-code app for makers, Power Fx, many connectors | **Canvas app** | `references/canvas-apps.md` |
+| Low-code app for makers, Power Fx, many connectors | **Canvas app** | `references/canvas-apps.md` → skill `power-apps-canvas-app-delegation-performance` |
 | Pro-code React UI, full control, still governed by Power Platform (sharing, DLP, Conditional Access, Dataverse) | **Power Apps code app** | `references/code-apps.md` |
 | A UI that lives *inside* SharePoint pages, Teams tabs or Viva | **SPFx web part / extension** | `references/sharepoint-spfx.md` |
 | Public site or external users | Power Pages (not covered here) or a custom app | `references/custom-react-apps.md` |

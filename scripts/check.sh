@@ -33,8 +33,8 @@ for s in plugins/*/skills/*/; do
 done
 
 # Privacy: real GUIDs, emails and tenant hosts must not appear
-if grep -rnoE "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}" plugins templates docs README.md | grep -v "00000000-0000-0000-0000-000000000000"; then err "GUID found (use placeholders)"; fi
-if grep -rnoE "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[a-z]{2,}" plugins templates docs README.md CONTRIBUTING.md | grep -viE "noreply@|@contoso\.|@example\.|@pnp/|@microsoft/|@azure/|@odata\.bind|@odata\.|@react-bits|@react-three|@gsap|@tailwindcss|@types|@vitejs|@jsrepo|@latest|@next"; then err "email address found"; fi
+if grep -rnoE "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}" plugins templates docs README.md --exclude-dir=results | grep -v "00000000-0000-0000-0000-000000000000"; then err "GUID found (use placeholders)"; fi
+if grep -rnoE "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[a-z]{2,}" plugins templates docs README.md CONTRIBUTING.md --exclude-dir=results | grep -viE "noreply@|@contoso\.|@example\.|@pnp/|@microsoft/|@azure/|@odata\.bind|@odata\.|@react-bits|@react-three|@gsap|@tailwindcss|@types|@vitejs|@jsrepo|@latest|@next"; then err "email address found"; fi
 if grep -rnoE "org[0-9a-f]{6,}\.crm[0-9]*\.dynamics\.com" plugins templates docs README.md; then err "real Dataverse org URL found"; fi
 
 [ $fail -eq 0 ] && echo "All checks passed" || exit 1

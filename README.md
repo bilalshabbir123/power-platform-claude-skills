@@ -9,6 +9,7 @@ Every skill solves **one specific problem**, explains the mistake that caused it
 | Plugin | Skill | Solves |
 |---|---|---|
 | **power-platform** | [`power-platform-solution-builder`](plugins/power-platform/skills/power-platform-solution-builder/) | **Start here.** Picks canvas / code app / SPFx / custom React / flow / AI, applies shared standards, loads only the matching reference |
+| | [`power-apps-canvas-app-delegation-performance`](plugins/power-platform/skills/power-apps-canvas-app-delegation-performance/) | Canvas apps that miss records (delegation, 10,000 row limit), start slowly or fail to save silently |
 | | [`power-apps-code-app-deployment`](plugins/power-platform/skills/power-apps-code-app-deployment/) | Publishing a code app: stale builds, wrong account, version proof |
 | | [`power-apps-code-app-dataverse-data-access`](plugins/power-platform/skills/power-apps-code-app-dataverse-data-access/) | Dataverse reads and writes without truncation, lost saves or throttling |
 | | [`power-apps-code-app-business-rules-testing`](plugins/power-platform/skills/power-apps-code-app-business-rules-testing/) | Automatic records at the wrong time, duplicates, date bugs, player-only bugs |

@@ -4,6 +4,7 @@ Power Apps code apps, canvas apps, Power Automate, Dataverse security and soluti
 
 ## Skills
 - [`dataverse-security-roles-for-code-apps`](skills/dataverse-security-roles-for-code-apps/)
+- [`power-apps-canvas-app-delegation-performance`](skills/power-apps-canvas-app-delegation-performance/)
 - [`power-apps-code-app-business-rules-testing`](skills/power-apps-code-app-business-rules-testing/)
 - [`power-apps-code-app-dataverse-data-access`](skills/power-apps-code-app-dataverse-data-access/)
 - [`power-apps-code-app-deployment`](skills/power-apps-code-app-deployment/)
