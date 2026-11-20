@@ -42,6 +42,18 @@ cp -R power-platform-claude-skills/plugins/*/skills/* ~/.claude/skills/
 ```
 Restart Claude Code. Skills load automatically when a request matches their `description`, or ask by name ("use the sharepoint-spfx-web-parts skill").
 
+## Claude setup: concepts and recommended plugins
+
+New to Claude Code, skills or plugins? Start with **[docs/claude-setup/](docs/claude-setup/)**:
+
+1. [Concepts guide](docs/claude-setup/README.md): Claude products, modes, context, memory and `CLAUDE.md`, skills vs commands vs hooks vs MCP vs plugins, prompting techniques, agents, Claude + Obsidian, safety.
+2. [Recommended plugins](docs/claude-setup/recommended-plugins.md): Ralph Loop, Context7, feature-dev, Playwright, Superpowers, code review, marketing/sales (knowledge-work), Claude Obsidian, ElevenLabs, Antigravity skill bundles, Power Platform. Each entry says what it does and how to use it.
+3. One command to install the whole setup on a new machine:
+   ```bash
+   scripts/install-recommended-plugins.sh
+   ```
+4. [`templates/CLAUDE.template.md`](templates/CLAUDE.template.md): a starting `CLAUDE.md` for a new project.
+
 ## Why one hub skill plus focused skills (not one giant skill)
 
 Claude reads every skill's short description all the time, a skill's `SKILL.md` only when it's relevant, and reference files only when the skill points to them. One giant skill would load every product's rules for every request and mix them up (for example canvas delegation rules in a code app). So:
@@ -64,10 +76,13 @@ plugins/
       references/                   # optional, loaded on demand
     evals/<case>/                   # tests: prompt.md + graders/*.md
 templates/SKILL.template.md         # required structure for every skill
+templates/CLAUDE.template.md        # starting CLAUDE.md for a new project
 docs/
+  claude-setup/                     # concepts guide + recommended plugins
   lessons-learned.md                # mistakes, causes, and the skill that prevents each
   testing-skills.md                 # how to run and write evals
 scripts/check.sh                    # structure + privacy checks (also run in CI)
+scripts/install-recommended-plugins.sh  # installs the recommended plugin setup
 CONTRIBUTING.md                     # standards, naming, quality gate, adding a technology
 ```
 
