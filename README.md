@@ -48,10 +48,11 @@ New to Claude Code, skills or plugins? Start with **[docs/claude-setup/](docs/cl
 
 1. [Concepts guide](docs/claude-setup/README.md): Claude products, modes, context, memory and `CLAUDE.md`, skills vs commands vs hooks vs MCP vs plugins, prompting techniques, agents, Claude + Obsidian, safety.
 2. [Recommended plugins](docs/claude-setup/recommended-plugins.md): Ralph Loop, Context7, feature-dev, Playwright, Superpowers, code review, marketing/sales (knowledge-work), Claude Obsidian, ElevenLabs, Antigravity skill bundles, Power Platform. Each entry says what it does and how to use it.
-3. One command to install the whole setup on a new machine:
+3. One command to install the whole setup on a new machine (plugins, personal skills, sync notes, session-start sync check):
    ```bash
    scripts/install-recommended-plugins.sh
    ```
+   Then `scripts/new-project.sh <folder>` for each new project, and `scripts/sync-setup.sh --push` to send newly installed plugins/skills back here. Details: [setup/README.md](setup/README.md).
 4. [`templates/CLAUDE.template.md`](templates/CLAUDE.template.md): a starting `CLAUDE.md` for a new project.
 
 ## Why one hub skill plus focused skills (not one giant skill)
@@ -83,6 +84,9 @@ docs/
   testing-skills.md                 # how to run and write evals
 scripts/check.sh                    # structure + privacy checks (also run in CI)
 scripts/install-recommended-plugins.sh  # installs the recommended plugin setup
+scripts/sync-setup.sh               # two-way sync: --check / --pull / --push
+scripts/new-project.sh              # adds plugin settings + CLAUDE.md to a project
+setup/                              # plugin list, personal skills, sync notes
 CONTRIBUTING.md                     # standards, naming, quality gate, adding a technology
 ```
 

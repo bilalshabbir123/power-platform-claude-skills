@@ -1,0 +1,84 @@
+{
+  "extraKnownMarketplaces": {
+    "power-platform-skills": {
+      "source": {
+        "source": "github",
+        "repo": "microsoft/power-platform-skills"
+      }
+    },
+    "knowledge-work-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/knowledge-work-plugins"
+      }
+    },
+    "superpowers-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "obra/superpowers-marketplace"
+      }
+    },
+    "agricidaniel-claude-obsidian": {
+      "source": {
+        "source": "github",
+        "repo": "AgriciDaniel/claude-obsidian"
+      }
+    },
+    "elevenlabs": {
+      "source": {
+        "source": "github",
+        "repo": "elevenlabs/claude-plugins"
+      }
+    },
+    "agentic-awesome-skills": {
+      "source": {
+        "source": "github",
+        "repo": "sickn33/antigravity-awesome-skills"
+      }
+    },
+    "power-platform-claude-skills": {
+      "source": {
+        "source": "github",
+        "repo": "bilalshabbir123/power-platform-claude-skills"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "canvas-apps@power-platform-skills": true,
+    "power-pages@power-platform-skills": true,
+    "model-apps@power-platform-skills": true,
+    "pcf@power-platform-skills": true,
+    "mcp-apps@power-platform-skills": true,
+    "code-apps-preview@power-platform-skills": true,
+    "mobile-app@power-platform-skills": true,
+    "power-apps-mobile-extension@power-platform-skills": true,
+    "power-automate@power-platform-skills": true,
+    "process-intelligence@power-platform-skills": true,
+    "ralph-loop@claude-plugins-official": true,
+    "context7@claude-plugins-official": true,
+    "feature-dev@claude-plugins-official": true,
+    "playwright@claude-plugins-official": true,
+    "code-review@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true,
+    "claude-md-management@claude-plugins-official": true,
+    "commit-commands@claude-plugins-official": true,
+    "pr-review-toolkit@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "security-guidance@claude-plugins-official": true,
+    "superpowers@superpowers-marketplace": true,
+    "marketing@knowledge-work-plugins": true,
+    "sales@knowledge-work-plugins": true,
+    "product-management@knowledge-work-plugins": true,
+    "productivity@knowledge-work-plugins": true,
+    "claude-obsidian@agricidaniel-claude-obsidian": true,
+    "elevenlabs-tts@elevenlabs": true,
+    "elevenlabs-stt@elevenlabs": true,
+    "agentic-bundle-essentials@agentic-awesome-skills": true,
+    "agentic-bundle-aas-documents-presentations@agentic-awesome-skills": true,
+    "power-platform@power-platform-claude-skills": true,
+    "sharepoint@power-platform-claude-skills": true,
+    "react@power-platform-claude-skills": true,
+    "ai-models@power-platform-claude-skills": true
+  }
+}

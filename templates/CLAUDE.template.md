@@ -32,6 +32,12 @@ npm test
 - `.claude/rules/deployment.md` — build and publish steps.
 - `.claude/rules/handover.md` — current status and next steps; update at the end of each session.
 
+## Claude setup for this project
+
+- Plugins come from `.claude/settings.json`, which was created by `power-platform-claude-skills/scripts/new-project.sh`.
+- If this project needs a new plugin or reusable skill, install it, then run `~/repos/power-platform-claude-skills/scripts/sync-setup.sh --push` so the setup repo has it for the next project. Never push anything client-specific (the repo is public).
+- Missing plugins on this computer: `~/repos/power-platform-claude-skills/scripts/sync-setup.sh --pull`.
+
 ## How I like replies
 
 Short, plain English, numbered steps. Explain any command I must run myself.

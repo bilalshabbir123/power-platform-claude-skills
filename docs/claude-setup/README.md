@@ -192,3 +192,5 @@ git clone https://github.com/bilalshabbir123/power-platform-claude-skills.git
 cd power-platform-claude-skills
 scripts/install-recommended-plugins.sh
 ```
+
+After that, everything stays in sync on its own: see [setup/README.md](../../setup/README.md) (new projects, two-way sync).
