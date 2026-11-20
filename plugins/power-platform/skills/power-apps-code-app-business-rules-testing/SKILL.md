@@ -54,6 +54,10 @@ description: Design and test the business rules inside a Power Apps code app —
 - **Browser storage** can be unavailable (private mode, blocked site data): wrap `localStorage` in `try/catch`; use it only for preferences (last tab), never for business data.
 - **Deep links:** read query parameters through the host context (`getContext()` from `@microsoft/power-apps/app`, `app.queryParams`), not `window.location`, because the app runs in a frame.
 - **Native date inputs:** act on blur, not on every keystroke.
+- **Dialogs:** render the dim layer and the dialog as **one** element portalled to `document.body`. **[Field-tested]** With separate layers, a delete confirmation dimmed the screen without showing the dialog and the player frame scrolled.
+- **Global CSS:** class names are shared by every page. **[Field-tested]** A new `.hero` class restyled another page that already used it. Prefix by page (`.today-hero`) or use CSS modules; grep before naming.
+- **What automation can't check:** the player hosts the app in a cross-origin iframe. **[Field-tested]** Browser-extension automation could screenshot, click and type, but couldn't read the app's DOM, choose files for upload or perform HTML5 drag-and-drop. Test those by hand and list them as manually tested (or untested) in the release notes.
+- **Browser APIs that do work:** **[Field-tested]** `speechSynthesis` (text to speech) works inside the player; voices load late in Chrome, so call `getVoices()` early and listen for `voiceschanged`.
 - **Accessibility:** minimum font size (we use 11px), contrast ≥ 4.5:1 in light and dark themes.
 
 ### Governance
@@ -157,6 +161,8 @@ Before releasing a rule change, run the new rule over a **read-only export** of 
 | Dates saved as year 0002 | Linked date logic ran on each keystroke | Run linked logic on blur; reject half-typed dates on save |
 | Image preview blank in the player only | `blob:` URLs blocked by CSP | Use `data:` URLs |
 | Deep link opens the home page | Read `window.location` inside the player iframe | `getContext().app.queryParams` |
+| Delete dims the screen but no dialog shows | Dim layer and dialog rendered separately inside the frame | One portalled element on `document.body` |
+| A page's styling changes after another page is added | Global CSS class name reused | Page-prefixed classes or CSS modules |
 | "Today" numbers stale next morning | Today computed once on load | Recompute on focus / interval |
 
 Not sure which product applies? Start with the `power-platform-solution-builder` hub skill.

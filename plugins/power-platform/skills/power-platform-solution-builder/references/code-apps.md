@@ -28,6 +28,9 @@ The CLI has changed generations (`pac code …` → `power-apps …` → `pa app
 | Query string | Read deep links with `getContext().app.queryParams`, not `window.location` | The app runs in an iframe **[Field-tested]** |
 | Storage | Wrap `localStorage` in try/catch | Can be unavailable in the player **[Field-tested]** |
 | Secrets | None in the bundle | Built assets are served from a public endpoint **[Microsoft]** |
+| File upload | The SharePoint/OneDrive connector clients couldn't upload file content from the app; send the file to an instant flow (Power Apps V2 trigger with a File input) that creates it in the library, and keep files small (we cap at 25 MB) | **[Field-tested]** |
+| Lookups | Lowercase SchemaName for lookup columns, or binds fail with `0x80048d19` | **[Field-tested]**, `power-apps-code-app-dataverse-data-access` |
+| Local dev | `npm run dev` has no data bridge; real data only in the player | **[Field-tested]** |
 | Paging | Follow `skipToken`; default page size is 500; never rely on `$top` for "all" | **[Field-tested]**, `power-apps-code-app-dataverse-data-access` |
 
 CSP is set per environment by an admin (Power Platform admin center → Environment → Settings → Product → Privacy + Security → Content security policy → App), or with the `PowerApps_CSPConfigCodeApps` setting via the Power Platform API. Custom values merge with defaults; for a `'none'` default they replace it **[Microsoft]**. Roll out CSP changes in report-only mode first.

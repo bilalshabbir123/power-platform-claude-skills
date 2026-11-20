@@ -22,7 +22,9 @@ description: Read and write Dataverse correctly from a Power Apps code app using
 1. **One access module** with `list`, `listPage`, `get`, `create`, `update`, `remove`, all returning `{ success, data, error }`.
 2. **Filter on the server** (`$filter`) and fetch only needed columns (`$select`). Code apps don't have canvas-style *delegation*; the equivalent risk is pulling whole tables into the browser.
 3. **Lookups:** if your client version can't `$expand`, load the related table once (only the columns you need) and join in memory by ID — never one request per row (N+1).
-4. **Large or computed data** (totals across tens of thousands of rows, AI summaries) belongs in a flow, a Dataverse custom API, or a rollup/calculated column — not in the browser.
+4. **Lowercase schema names for anything used as a lookup.** **[Field-tested]** The code-app data bridge sends lookup binds using the lowercase logical name (`cr123_projectid@odata.bind`). Columns created with a mixed-case SchemaName (`cr123_ProjectId`) failed on create/update with error `0x80048d19`. Create tables and columns with SchemaName equal to LogicalName (all lowercase) from day one; renaming later is not possible.
+5. **Choice values are a contract.** When a script generates option values from a list (`787530000 + index`), only ever append options. Inserting or reordering silently changes the meaning of every existing row.
+6. **Large or computed data** (totals across tens of thousands of rows, AI summaries) belongs in a flow, a Dataverse custom API, or a rollup/calculated column — not in the browser.
 
 ### Development standards
 
@@ -89,7 +91,20 @@ If users will append history (comments, logs) to one column, make it a Multiline
 
 **Double submit.** Disabling the button isn't enough (Enter key, key repeat, fast double click). Keep an in-flight ref per form and ignore repeats; for "create", reuse an identical in-flight request for a few seconds.
 
-**Dates.** Dataverse date-time values are UTC. Decide per column whether it's *date only* or *date and time*, convert to the user's local day for "today/this week" logic, and never act on a native `<input type="date">` `onChange` that links or saves other fields — act on blur (typing passes through years like `0002`).
+**Find-or-create from two events at once.** **[Field-tested]** A note's blur and a checkbox tick saved the same daily check-in in the same moment. Each callback held a stale list, found no row and created one: twin rows. A per-form ref doesn't help when two components race. Keep a module-level map of in-flight creates keyed by the natural key and await it:
+```ts
+const inFlight = new Map<string, Promise<string>>(); // key -> id
+export async function findOrCreate(key: string, find: () => string | undefined, create: () => Promise<string>) {
+  const existing = find(); if (existing) return existing;
+  const pending = inFlight.get(key); if (pending) return pending;
+  const p = create().finally(() => inFlight.delete(key));
+  inFlight.set(key, p); return p;
+}
+```
+
+**Shared client cache returns copies.** **[Field-tested]** A page called `.sort()` on an array from the shared store and reordered lists on other pages. Return copies (or freeze) from the store; sort with `[...rows].sort()` / `toSorted()`.
+
+**Dates.** Dataverse date-time values are UTC. Decide per column whether it's *date only* or *date and time*, convert to the user's local day for "today/this week" logic, store wall-clock values such as "routine at 07:00" as *time-zone independent* or as `HH:mm` text (**[Field-tested]** UTC-converted times showed an hour late after the clocks changed to summer time), and never act on a native `<input type="date">` `onChange` that links or saves other fields — act on blur (typing passes through years like `0002`).
 
 ### Governance and DLP
 - The native Dataverse data source is the preferred path; connector-based sources (SharePoint, SQL) are subject to DLP classification — keep them in the same business group as Dataverse.
@@ -110,6 +125,7 @@ If users will append history (comments, logs) to one column, make it a Multiline
 ### ALM
 - Table and column changes go in the **same solution** as the app. Add columns to DEV, add them to the solution, and only then rely on them in code (with the dropping-retry as a safety net during rollout).
 - After `pa app add data-source` / `refresh data-source`, commit the generated schema and services together with the code that uses them.
+- **Schema as code.** `pac` can't create Dataverse tables or columns **[Field-tested]**. Keep the schema in one script that calls the Web API idempotently (create only what is missing, add the component to the solution) and generates the TypeScript types from the same definition, so code and tables never drift.
 
 ### Licensing
 - Using Dataverse makes the app **premium** **[Microsoft]**: every user needs Power Apps Premium (or per-app / PAYG / App Pass), which also sets their request entitlement.
@@ -203,6 +219,9 @@ Prove it in TEST: save, refresh the page, and read the row back from Dataverse (
 | Search breaks on names like O'Brien | Unescaped quote in an OData literal | `odataString()` helper doubles single quotes |
 | Search for "Jo" also matches "Joanna" | `contains()` used where an exact match was meant | Exact compare after the server filter |
 | Two records from one click | No double-submit guard | `useRef` in-flight flag + disabled button |
+| Create/update with a lookup fails with `0x80048d19` | Mixed-case SchemaName; bridge binds with the lowercase name | Create schema names in lowercase (SchemaName = LogicalName) |
+| Twin rows for the same day/item | Two events ran find-or-create at once with stale state | Module-level in-flight map keyed by the natural key |
+| Lists on another page change order | In-place `.sort()` on a shared store array | Store returns copies; sort a copy |
 | 429 errors during bulk work | Service protection limits | Respect `Retry-After`, batch, reduce parallel calls |
 
 Not sure which product applies? Start with the `power-platform-solution-builder` hub skill.

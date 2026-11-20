@@ -1,6 +1,6 @@
 # Lessons learned
 
-Real mistakes made while building and releasing an enterprise Power Apps code app (React + Dataverse + Power Automate), and while building this skills repo, what caused each one, and the skill or practice that now prevents it. Details are anonymised.
+Real mistakes made while building and releasing an enterprise Power Apps code app (React + Dataverse + Power Automate), while building a personal-productivity code app on Dataverse, and while building this skills repo, what caused each one, and the skill or practice that now prevents it. Details are anonymised.
 
 | # | What went wrong | Root cause | Prevented by |
 |---|---|---|---|
@@ -31,6 +31,16 @@ Real mistakes made while building and releasing an enterprise Power Apps code ap
 | 25 | Skills for several technologies were hard to find and install | Flat `skills/` folder with no grouping | One plugin per technology + marketplace manifest + hub skill |
 | 26 | Same rules repeated or contradicted across products | One-size advice (e.g. canvas row limits applied to code apps) | `power-platform-solution-builder` loads only the matching reference |
 | 27 | Canvas advice said the data row limit maxes at 2,000 | Model knowledge out of date (current maximum is 10,000) and the fact sat only in a hub reference file | `power-apps-canvas-app-delegation-performance` + an eval grader that checks the current limit |
+| 28 | Every create/update with a lookup failed with `0x80048d19` | Columns created with mixed-case SchemaName; the code-app bridge binds with the lowercase logical name | `power-apps-code-app-dataverse-data-access` |
+| 29 | Publishing with `pac code push` returned HTTP 400 (`workflowDetails`) | App referenced a flow; older CLI generation | `power-apps-code-app-deployment` (use `pa app push`) |
+| 30 | A command in one project ran against another tenant | `pac` auth profiles are shared by every terminal; another window had switched profile | `power-apps-code-app-deployment` (per-project wrapper script) |
+| 31 | Twin check-in rows for the same day | Two UI events ran find-or-create at once with stale state | `power-apps-code-app-dataverse-data-access` (in-flight map) |
+| 32 | Lists reordered on unrelated pages | In-place sort of a shared store array | `power-apps-code-app-dataverse-data-access` |
+| 33 | Routine times shown an hour late after the clock change | Wall-clock times stored UTC-converted | `power-apps-code-app-dataverse-data-access` |
+| 34 | Delete dimmed the screen but showed no dialog | Dim layer and dialog rendered separately in the player frame | `power-apps-code-app-business-rules-testing` |
+| 35 | "Fix didn't work" reports after a publish | Player's own cached "old version — Refresh" banner | `power-apps-code-app-deployment` |
+| 36 | Files couldn't be uploaded to SharePoint from the app | Connector client can't send file content | Instant flow with a File input (`power-platform-solution-builder` code-apps reference) |
+| 37 | UI tests "passed" that never ran file pickers or drag-and-drop | Automation can't reach inside the cross-origin player iframe | `power-apps-code-app-business-rules-testing` (list manual tests) |
 
 ## Working rules that came out of this
 
@@ -43,3 +53,4 @@ Real mistakes made while building and releasing an enterprise Power Apps code ap
 7. One rule module per business rule; test the precondition-false case.
 8. Every skill ships with eval cases and is checked with and without the skill before release.
 9. Link third-party code instead of copying it when its licence restricts redistribution.
+10. Keep two tenants apart on one machine: wrap every CLI call in a script that selects and checks the account/environment, and restores it afterwards.

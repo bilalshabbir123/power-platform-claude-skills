@@ -27,7 +27,7 @@ description: Build, publish and verify a Power Apps code app (React/Vue/Vite) wi
    |---|---|---|
    | Power Apps CLI (current) | `pa app push` | Documented on Microsoft Learn |
    | npm `@microsoft/power-apps` (earlier) | `power-apps push --non-interactive` | Same flow, older binary name |
-   | PAC CLI (earliest preview) | `pac code push` | **[Field-tested]** On one tenant this hit a different endpoint and silently didn't update the app; we stopped using it. If you must use it, verify the version string afterwards. |
+   | PAC CLI (earliest preview) | `pac code push` | **[Field-tested]** On one tenant this hit a different endpoint and silently didn't update the app; on another it returned HTTP 400 mentioning `workflowDetails` because the app referenced a flow (connection reference). `pa app push` worked in both cases. If you must use it, verify the version string afterwards. |
 
 ### Development standards
 1. **Version string.** Keep `appVersion` in one file (e.g. `src/brandingConfig.ts`) and show it in the sidebar or footer. Bump it on **every** publish.
@@ -52,6 +52,7 @@ description: Build, publish and verify a Power Apps code app (React/Vue/Vite) wi
 - **Compiled assets are served from a publicly accessible endpoint** **[Microsoft]**. Never put secrets, keys, tenant-specific confidential data or customer data in the bundle. Load data after sign-in from a data source.
 - IP restriction (SAS IP binding / firewall) does **not** apply to code apps; use **Conditional Access** by location instead **[Microsoft]**.
 - Sign in with the **intended account** and confirm it before every publish: `pa auth status`; change with `pa auth switch --account <upn>`. **[Field-tested]** With the older npm CLI, cached tokens for two accounts produced "Multiple accounts found" and publishes failed until the cached credential was cleared (on macOS it was stored in Keychain under the service name `power-apps`).
+- **Two tenants on one machine:** **[Field-tested]** `pac` keeps every auth profile in one shared file, so `pac auth select` in one terminal switches every other terminal and project too. Wrap commands in a per-project script that selects the profile, checks the environment ID (`pac org who`), runs the command and then restores the previous profile; never run a bare `pac auth select` / `pa auth switch` in a shared shell. Device-code sign-in expired before it was completed several times; the browser sign-in (`pa auth login --account <upn>`) was reliable.
 - For pipelines, use a **service principal**: share the app with it with `--access edit` (use the Enterprise Application object ID) and publish with `--non-interactive` **[Microsoft]**.
 
 ### Performance
@@ -147,6 +148,9 @@ echo "Published $VERSION — reload the app and check the footer."
 | `git`, `npm test` or the build hangs for minutes | Repo in a OneDrive/cloud folder; `node_modules` evicted to online-only | Move the repo out of the synced folder, or `npm ci` to rewrite `node_modules` locally |
 | Player keeps loading an old deployment | Play URL contains a `hint=` parameter | Use the play URL without `hint=` |
 | Data calls hang in `npm run dev` | Data bridge only answers inside the player | Dev-only timeout around SDK calls; test data paths in the player |
+| `pac code push` fails with HTTP 400 mentioning `workflowDetails` | App references a flow; older CLI generation | Publish with `pa app push` |
+| Player shows its own "old version — Refresh" banner after a publish | The player's cache, not the app | Click Refresh (sometimes twice) and check the version string before judging a fix |
+| SharePoint / OneDrive views fail only on first use | One-time connector consent dialog ("Allow … to access your data?") not accepted yet | Accept the consent in the player; tell testers to expect it |
 | App works for you, not for a colleague | Shared with the app but no Dataverse role / licence | Assign a security role and Premium licence; share with a group |
 
 Not sure which product applies? Start with the `power-platform-solution-builder` hub skill.
