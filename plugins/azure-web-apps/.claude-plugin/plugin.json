@@ -1,0 +1,8 @@
+{
+  "name": "azure-web-apps",
+  "description": "Custom web apps on Azure for Microsoft 365 organisations: offline-first PWA sync, low-cost POC hosting (App Service + free Azure SQL), and Entra ID sign-in for installable PWAs.",
+  "version": "1.0.0",
+  "author": { "name": "bilalshabbir123" },
+  "repository": "https://github.com/bilalshabbir123/power-platform-claude-skills",
+  "keywords": ["azure","pwa","offline","sync","app-service","azure-sql","entra-id","msal","dotnet","react"]
+}

@@ -1,6 +1,6 @@
 # Lessons learned
 
-Real mistakes made while building and releasing an enterprise Power Apps code app (React + Dataverse + Power Automate), while building a personal-productivity code app on Dataverse, and while building this skills repo, what caused each one, and the skill or practice that now prevents it. Details are anonymised.
+Real mistakes made while building and releasing an enterprise Power Apps code app (React + Dataverse + Power Automate), while building a personal-productivity code app on Dataverse, while building an offline field-service PWA on Azure (React + ASP.NET Core + Azure SQL), and while building this skills repo, what caused each one, and the skill or practice that now prevents it. Details are anonymised.
 
 | # | What went wrong | Root cause | Prevented by |
 |---|---|---|---|
@@ -41,6 +41,18 @@ Real mistakes made while building and releasing an enterprise Power Apps code ap
 | 35 | "Fix didn't work" reports after a publish | Player's own cached "old version — Refresh" banner | `power-apps-code-app-deployment` |
 | 36 | Files couldn't be uploaded to SharePoint from the app | Connector client can't send file content | Instant flow with a File input (`power-platform-solution-builder` code-apps reference) |
 | 37 | UI tests "passed" that never ran file pickers or drag-and-drop | Automation can't reach inside the cross-origin player iframe | `power-apps-code-app-business-rules-testing` (list manual tests) |
+| 38 | Two surveys for one job after an office PC and a tablet both started it | Each device generated a random ID for a record that should be one per parent | `pwa-offline-first-sync` (UUID v5 from the parent ID + server merge-create) |
+| 39 | Users saw "Sync failed – retrying" with no clue why | The panel didn't show the HTTP status or message | `pwa-offline-first-sync` |
+| 40 | No sync after aeroplane mode / Control Centre on iPhone | iOS didn't fire the `online` event | `pwa-offline-first-sync` (also sync on visibility and focus) |
+| 41 | Reassigned jobs stayed on the old surveyor's tablet | Pull returned changes only, not the user's current scope | `pwa-offline-first-sync` (scope reconciliation) |
+| 42 | App broken for 9 days mid-month | Free Azure SQL database used its monthly compute and auto-paused | `azure-low-cost-poc-hosting` |
+| 43 | Free compute used up in 10 days | A 60-second poll from one open tab kept the serverless database awake | `azure-low-cost-poc-hosting`, `pwa-offline-first-sync` |
+| 44 | Couldn't stop database charges after a demo | Free-limit behaviour BillOverUsage can't be changed back to AutoPause | `azure-low-cost-poc-hosting` |
+| 45 | ~2-minute first page load | App Service Free F1 has no Always On and sleeps when idle | `azure-low-cost-poc-hosting` (B1 + Always On for demos) |
+| 46 | Deploy result unknown | Deploy window closed after "Warmed up Kudu instance"; nobody checked the live bundle | `azure-low-cost-poc-hosting` |
+| 47 | Server PDF generation failed with a licence exception | A newer major version of a PDF library changed its licensing | `azure-low-cost-poc-hosting` (check the exact version's licence) |
+| 48 | Couldn't assign app roles to users | "Add user/group" needs enterprise app Owner or Cloud Application Administrator | `entra-id-msal-pwa-sign-in` |
+| 49 | Docs said Standard LRS, the storage account was GRS | SKU not checked after creation | `azure-low-cost-poc-hosting` |
 
 ## Working rules that came out of this
 
@@ -54,3 +66,4 @@ Real mistakes made while building and releasing an enterprise Power Apps code ap
 8. Every skill ships with eval cases and is checked with and without the skill before release.
 9. Link third-party code instead of copying it when its licence restricts redistribution.
 10. Keep two tenants apart on one machine: wrap every CLI call in a script that selects and checks the account/environment, and restores it afterwards.
+11. Free cloud tiers need an owner: someone scales up before a demo and back down after, and nobody flips a one-way billing setting "just for the demo".

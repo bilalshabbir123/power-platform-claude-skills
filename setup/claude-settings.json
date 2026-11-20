@@ -79,6 +79,7 @@
     "power-platform@power-platform-claude-skills": true,
     "sharepoint@power-platform-claude-skills": true,
     "react@power-platform-claude-skills": true,
-    "ai-models@power-platform-claude-skills": true
+    "ai-models@power-platform-claude-skills": true,
+    "azure-web-apps@power-platform-claude-skills": true
   }
 }

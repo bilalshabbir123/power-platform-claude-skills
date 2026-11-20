@@ -1,6 +1,6 @@
 # Power Platform Claude Skills
 
-Field-tested [Claude Code skills](https://docs.claude.com/en/docs/claude-code/skills) for Microsoft **Power Platform**, **SharePoint**, **React UI** and **custom AI models**, organised as a plugin marketplace: **one plugin per technology**, all in one repository.
+Field-tested [Claude Code skills](https://docs.claude.com/en/docs/claude-code/skills) for Microsoft **Power Platform**, **SharePoint**, **React UI**, **custom AI models** and **custom Azure web apps**, organised as a plugin marketplace: **one plugin per technology**, all in one repository.
 
 Every skill solves **one specific problem**, explains the mistake that caused it, and ends with the checks that stop it happening again. Each skill has eval cases, so you can check it actually improves Claude's answers.
 
@@ -19,6 +19,9 @@ Every skill solves **one specific problem**, explains the mistake that caused it
 | **sharepoint** | [`sharepoint-spfx-web-parts`](plugins/sharepoint/skills/sharepoint-spfx-web-parts/) | SPFx on the Heft toolchain, data access, permissions, throttling, CI |
 | **react** | [`react-bits-animated-ui`](plugins/react/skills/react-bits-animated-ui/) | React Bits animations that are accessible, fast, CSP-safe and licence-compliant |
 | **ai-models** | [`unsloth-custom-llm-for-power-platform`](plugins/ai-models/skills/unsloth-custom-llm-for-power-platform/) | Fine-tune with Unsloth and call the model from Power Platform safely |
+| **azure-web-apps** | [`pwa-offline-first-sync`](plugins/azure-web-apps/skills/pwa-offline-first-sync/) | Field PWAs that lose changes, duplicate on retry or keep reassigned jobs when used offline |
+| | [`azure-low-cost-poc-hosting`](plugins/azure-web-apps/skills/azure-low-cost-poc-hosting/) | POC on Azure for ~£0: F1/B1 for demos, the free SQL database pause and its one-way billing switch |
+| | [`entra-id-msal-pwa-sign-in`](plugins/azure-web-apps/skills/entra-id-msal-pwa-sign-in/) | Microsoft 365 sign-in for installable PWAs: redirect flow, offline, server roles, dev-only fake auth |
 
 The mistakes these skills prevent are listed in [docs/lessons-learned.md](docs/lessons-learned.md).
 
@@ -31,6 +34,7 @@ The mistakes these skills prevent are listed in [docs/lessons-learned.md](docs/l
 /plugin install sharepoint@power-platform-claude-skills
 /plugin install react@power-platform-claude-skills
 /plugin install ai-models@power-platform-claude-skills
+/plugin install azure-web-apps@power-platform-claude-skills
 ```
 Update later with `/plugin marketplace update power-platform-claude-skills`.
 
@@ -68,7 +72,7 @@ Claude reads every skill's short description all the time, a skill's `SKILL.md` 
 ```
 .claude-plugin/marketplace.json     # lists every plugin in this repo
 plugins/
-  <technology>/                     # power-platform, sharepoint, react, ai-models, ...
+  <technology>/                     # power-platform, sharepoint, react, ai-models, azure-web-apps, ...
     .claude-plugin/plugin.json      # name, description, version
     README.md
     skills/<skill-name>/

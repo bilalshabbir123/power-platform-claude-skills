@@ -7,7 +7,7 @@
 3. Add a `README.md` next to it (purpose, when to use, what's inside, related skills).
 4. Add at least **two eval cases** in `plugins/<technology>/evals/<case>/` (see `docs/testing-skills.md`).
 5. Add a row to the root `README.md` table and, if it's a new kind of request, a line in the hub skill's decision table (`power-platform-solution-builder`).
-6. Scope: Microsoft Power Platform, Microsoft 365 / SharePoint, and technologies used *with* them in business apps (React UI, custom AI models). Explain the Power Platform / Microsoft 365 angle in the skill.
+6. Scope: Microsoft Power Platform, Microsoft 365 / SharePoint, and technologies used *with* them in business apps (React UI, custom AI models, custom Azure web apps for Microsoft 365 organisations). Explain the Power Platform / Microsoft 365 angle in the skill.
 
 ## Adding a new technology
 
@@ -19,8 +19,8 @@
 
 ## Naming
 
-- Folder and `name:` are the same, lowercase kebab-case, starting with the product or technology: `power-apps-…`, `power-automate-…`, `dataverse-…`, `power-pages-…`, `power-platform-…`, `copilot-studio-…`, `ai-builder-…`, `power-bi-…`, `sharepoint-…`, `react-…`, or the library name (`react-bits-…`, `unsloth-…`).
-- Plugin folders are the technology: `power-platform`, `sharepoint`, `react`, `ai-models` (add new ones the same way).
+- Folder and `name:` are the same, lowercase kebab-case, starting with the product or technology: `power-apps-…`, `power-automate-…`, `dataverse-…`, `power-pages-…`, `power-platform-…`, `copilot-studio-…`, `ai-builder-…`, `power-bi-…`, `sharepoint-…`, `react-…`, `azure-…`, `entra-id-…`, `pwa-…`, or the library name (`react-bits-…`, `unsloth-…`).
+- Plugin folders are the technology: `power-platform`, `sharepoint`, `react`, `ai-models`, `azure-web-apps` (add new ones the same way).
 - Skill names are unique across the whole repo.
 - The name says the specific problem (`power-automate-dataverse-triggered-flows`), not a generic area (`power-automate-tips`).
 - `description:` says **what** the skill does and **when** to use it, with words people actually type (Claude uses it to decide when to load the skill). Keep it under 1,024 characters.

@@ -1,14 +1,37 @@
 {
   "name": "power-platform-claude-skills",
-  "owner": { "name": "bilalshabbir123" },
+  "owner": {
+    "name": "bilalshabbir123"
+  },
   "metadata": {
-    "description": "Field-tested Claude Code skills for Microsoft Power Platform, SharePoint, React UI and custom AI models, one plugin per technology.",
-    "version": "1.1.0"
+    "description": "Field-tested Claude Code skills for Microsoft Power Platform, SharePoint, React UI, custom AI models and custom Azure web apps, one plugin per technology.",
+    "version": "1.2.0"
   },
   "plugins": [
-    { "name": "power-platform", "source": "./plugins/power-platform", "description": "Code apps, canvas apps, Power Automate, Dataverse security, solution ALM and the hub skill." },
-    { "name": "sharepoint", "source": "./plugins/sharepoint", "description": "SharePoint Framework (SPFx) web parts and extensions." },
-    { "name": "react", "source": "./plugins/react", "description": "React UI: React Bits animated components, accessible and CSP-safe." },
-    { "name": "ai-models", "source": "./plugins/ai-models", "description": "Fine-tune with Unsloth and call your model from Power Platform." }
+    {
+      "name": "power-platform",
+      "source": "./plugins/power-platform",
+      "description": "Code apps, canvas apps, Power Automate, Dataverse security, solution ALM and the hub skill."
+    },
+    {
+      "name": "sharepoint",
+      "source": "./plugins/sharepoint",
+      "description": "SharePoint Framework (SPFx) web parts and extensions."
+    },
+    {
+      "name": "react",
+      "source": "./plugins/react",
+      "description": "React UI: React Bits animated components, accessible and CSP-safe."
+    },
+    {
+      "name": "ai-models",
+      "source": "./plugins/ai-models",
+      "description": "Fine-tune with Unsloth and call your model from Power Platform."
+    },
+    {
+      "name": "azure-web-apps",
+      "source": "./plugins/azure-web-apps",
+      "description": "Offline-first PWA sync, low-cost Azure POC hosting, and Entra ID sign-in for installable PWAs."
+    }
   ]
 }
