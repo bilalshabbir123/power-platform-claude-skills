@@ -22,6 +22,7 @@ Every skill solves **one specific problem**, explains the mistake that caused it
 | **azure-web-apps** | [`pwa-offline-first-sync`](plugins/azure-web-apps/skills/pwa-offline-first-sync/) | Field PWAs that lose changes, duplicate on retry or keep reassigned jobs when used offline |
 | | [`azure-low-cost-poc-hosting`](plugins/azure-web-apps/skills/azure-low-cost-poc-hosting/) | POC on Azure for ~£0: F1/B1 for demos, the free SQL database pause and its one-way billing switch |
 | | [`entra-id-msal-pwa-sign-in`](plugins/azure-web-apps/skills/entra-id-msal-pwa-sign-in/) | Microsoft 365 sign-in for installable PWAs: redirect flow, offline, server roles, dev-only fake auth |
+| | [`pwa-client-requirements-clarification-doc`](plugins/azure-web-apps/skills/pwa-client-requirements-clarification-doc/) | Meeting transcripts → client roles/screens/features document with a role matrix and branded mock screens |
 
 The mistakes these skills prevent are listed in [docs/lessons-learned.md](docs/lessons-learned.md).
 

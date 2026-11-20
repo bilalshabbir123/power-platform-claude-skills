@@ -6,6 +6,7 @@ Custom web apps on Azure for Microsoft 365 organisations, when Power Apps isn't 
 - [`pwa-offline-first-sync`](skills/pwa-offline-first-sync/)
 - [`azure-low-cost-poc-hosting`](skills/azure-low-cost-poc-hosting/)
 - [`entra-id-msal-pwa-sign-in`](skills/entra-id-msal-pwa-sign-in/)
+- [`pwa-client-requirements-clarification-doc`](skills/pwa-client-requirements-clarification-doc/)
 
 ## Install
 

@@ -53,6 +53,8 @@ Real mistakes made while building and releasing an enterprise Power Apps code ap
 | 47 | Server PDF generation failed with a licence exception | A newer major version of a PDF library changed its licensing | `azure-low-cost-poc-hosting` (check the exact version's licence) |
 | 48 | Couldn't assign app roles to users | "Add user/group" needs enterprise app Owner or Cloud Application Administrator | `entra-id-msal-pwa-sign-in` |
 | 49 | Docs said Standard LRS, the storage account was GRS | SKU not checked after creation | `azure-low-cost-poc-hosting` |
+| 50 | Client's screen list left out the price list they had asked for in the demo | Requests spread across two meetings and a separate list | `pwa-client-requirements-clarification-doc` (mark "(proposed)" and ask) |
+| 51 | AI meeting recap stated things not quite said in the call | Recap used without checking the transcript | `pwa-client-requirements-clarification-doc` |
 
 ## Working rules that came out of this
 
