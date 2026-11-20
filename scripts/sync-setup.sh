@@ -19,6 +19,8 @@ except Exception: pass
 up, rp = user.get('enabledPlugins', {}), repo['enabledPlugins']
 um, rm = user.get('extraKnownMarketplaces', {}), repo['extraKnownMarketplaces']
 skip_skills = {'synced'}
+priv = os.path.expanduser('~/repos/claude-setup-private/skills')
+if os.path.isdir(priv): skip_skills |= set(os.listdir(priv))  # private skills never go to this public repo
 us = {d for d in os.listdir(f'{home}/skills')} - skip_skills if os.path.isdir(f'{home}/skills') else set()
 rs = set(os.listdir('setup/skills'))
 missing_mkts = {}

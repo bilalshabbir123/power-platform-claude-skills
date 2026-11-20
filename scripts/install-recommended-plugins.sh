@@ -35,7 +35,11 @@ done
 
 echo "3/3 Copying personal skills to ~/.claude/skills"
 mkdir -p ~/.claude/skills
-for s in setup/skills/*/; do cp -R "$s" ~/.claude/skills/; echo "   $(basename "$s")"; done
+for s in setup/skills/*/; do cp -R "${s%/}" ~/.claude/skills/; echo "   $(basename "$s")"; done
+
+priv=~/repos/claude-setup-private
+if [ ! -d "$priv" ] && command -v gh >/dev/null; then gh repo clone bilalshabbir123/claude-setup-private "$priv" >/dev/null 2>&1 || true; fi
+[ -x "$priv/install.sh" ] && { echo "Private skills (claude-setup-private)"; "$priv/install.sh" | sed 's/^/   /'; }
 
 echo "Adding the sync notes to ~/.claude/CLAUDE.md and the session-start sync check"
 touch ~/.claude/CLAUDE.md

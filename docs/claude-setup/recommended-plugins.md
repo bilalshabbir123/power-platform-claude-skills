@@ -62,7 +62,7 @@ From `power-platform-skills`: canvas-apps, code-apps-preview, model-apps, power-
 
 ## Personal skills (in `~/.claude/skills`, not plugins)
 
-These came from a course skill pack (MIT licence) and are installed locally, not published here: `meeting-notes-extractor`, `decision-logger`, `sop-standardizer`, `notes-to-powerpoint`, `writing-partner`. They were written for claude.ai, so in Claude Code tell them where the input file is and where to save the output.
+18 MIT-licensed skills from a course skill pack are in [`setup/skills/`](../../setup/skills/) and installed by the install script, including PowerPoint ones (`notes-to-powerpoint`, `csv-to-presentations`). Skills without an open licence (PowerPoint/Excel redesigners, diagram design, image skills, Higgsfield) and all course documents are in the private repo `claude-setup-private`. They were written for claude.ai, so in Claude Code tell them where the input file is and where to save the output.
 
 ## Not installed, and why
 
@@ -70,8 +70,7 @@ These came from a course skill pack (MIT licence) and are installed locally, not
 |---|---|
 | Whole Antigravity skill library (`agentic-awesome-skills`) | Too many skills at once; pick bundles instead. |
 | `superpowers@claude-plugins-official` | Same plugin as the obra marketplace one; installing both duplicates skills. |
-| `dfa-excel-formatter`, `dfa-pptx-redesigner` | Branded for another company. |
-| `higgsfield-*`, `diagram-design`, Stitch project | Image/video prompting and Excalidraw tools; add when needed. |
+| `dfa-excel-formatter`, `dfa-pptx-redesigner` | Stored in the private repo, not installed: branded for another company (change to Inteknix branding first). |
 
 ## Keep it healthy
 

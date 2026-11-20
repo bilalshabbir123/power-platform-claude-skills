@@ -5,7 +5,8 @@ Everything needed to rebuild the Claude Code setup on a new computer or in a new
 | File | What it is |
 |---|---|
 | `claude-settings.json` | The list of plugin marketplaces and enabled plugins. Merged into `~/.claude/settings.json` by the install script. |
-| `skills/` | Personal skills copied to `~/.claude/skills` (meeting notes, decision log, SOP, notes to PowerPoint, writing partner). MIT licence, from a public course skill pack. |
+| `skills/` | 18 personal skills copied to `~/.claude/skills`, all MIT licence (from a course skill pack): PowerPoint (`notes-to-powerpoint`, `csv-to-presentations`), documents (`document-converter`, `meeting-notes-extractor`, `sop-standardizer`, `decision-logger`), writing and marketing (`writing-partner`, `content-optimizer`, `linkedin-post-generator`, `hook-engineer`, `cta-optimizer`, `ab-copy-variants-generator`, `seo-intent-analyzer`, `campaign-retrospective-builder`), and `research`, `metric-explainer`, `career-ladder`, `job-description-optimizer`. |
+| Private repo `claude-setup-private` | Course documents and skills without an open licence (PowerPoint/Excel redesigners, diagram design, image skills…). Cloned and installed automatically by the install script when you have access. |
 | `user-CLAUDE.md` | Sync notes added to `~/.claude/CLAUDE.md`, so Claude knows about this repo in every project. |
 | `../templates/project/.claude/settings.json` | The same plugin list for a single project; `scripts/new-project.sh` adds it. |
 

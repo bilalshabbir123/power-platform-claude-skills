@@ -12,6 +12,9 @@ A session-start check prints "Claude setup is out of sync…" when this computer
    also never push client names, project-specific skills or anything from a client project. If unsure, ask me first.
 3. **New project:** run `~/repos/power-platform-claude-skills/scripts/new-project.sh <project folder>` to add
    `.claude/settings.json` (same plugins) and a starter `CLAUDE.md`.
-4. **Learned something reusable** (a Power Platform / SharePoint / React fix that would help other projects):
+4. **Private material** (course documents, skills without an open licence) goes to the PRIVATE repo
+   `bilalshabbir123/claude-setup-private` at `~/repos/claude-setup-private` (see its README), never the public one.
+   When I download new Claude documents or skills, sort them into its `documents/` or `skills/` folder and push.
+5. **Learned something reusable** (a Power Platform / SharePoint / React fix that would help other projects):
    suggest adding it as a skill or a lessons-learned entry in that repo, following its CONTRIBUTING.md.
 <!-- /claude-setup-sync -->
