@@ -16,6 +16,9 @@ Install one by hand with `/plugin install <plugin>@<marketplace>` inside Claude 
 | `agricidaniel-claude-obsidian` | `claude plugin marketplace add AgriciDaniel/claude-obsidian` | Community |
 | `elevenlabs` | `claude plugin marketplace add elevenlabs/claude-plugins` | ElevenLabs |
 | `agentic-awesome-skills` | `claude plugin marketplace add sickn33/antigravity-awesome-skills` | Community ("Antigravity Awesome Skills") |
+| `compound-engineering-plugin` | `claude plugin marketplace add EveryInc/compound-engineering-plugin` | Every |
+| `playwright-skill` | `claude plugin marketplace add lackeyjb/playwright-skill` | Community (lackeyjb, MIT) |
+| `21st-dev` | `claude plugin marketplace add 21st-dev/magic-mcp` | 21st.dev |
 
 ## Coding and building
 
@@ -34,6 +37,10 @@ Install one by hand with `/plugin install <plugin>@<marketplace>` inside Claude 
 | **skill-creator** | official | Helps write, test and improve skills. | "Use skill-creator to make a skill for …" |
 | **claude-md-management** | official | Audits and improves `CLAUDE.md` files. | `/revise-claude-md` |
 | **superpowers** | superpowers-marketplace | 15 skills for a disciplined workflow: brainstorm → plan → test-first → debug → review. | Automatic; or "use superpowers to plan this". |
+| **compound-engineering** | compound-engineering-plugin | Plan → work → review → "compound" (each fix is written up so the next task is faster). Overlaps with superpowers: use one per project. | `/ce-plan`, `/ce-work`, `/ce-code-review`, `/ce-compound`; `/ce-help` lists all. |
+| **playwright-skill** | playwright-skill | Claude writes and runs its own Playwright scripts (screenshots, form and login tests). | Run its `npm run setup` once (downloads Chromium), then "use Playwright to test <url>". |
+| **21st** (was Magic MCP) | 21st-dev | Ready-made React/Tailwind UI components from 21st.dev. | Needs a free key from https://21st.dev/mcp in `API_KEY_21ST` (shell profile). |
+| **graphify** (skill, not a plugin) | — (PyPI `graphifyy`) | Turns a folder (code, docs, PDFs) into a knowledge graph Claude queries instead of searching. | Install: `pipx install graphifyy && graphify install`. Use: `/graphify .` |
 
 ## Business work
 
