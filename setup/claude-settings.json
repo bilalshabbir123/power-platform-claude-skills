@@ -41,6 +41,24 @@
         "source": "github",
         "repo": "bilalshabbir123/power-platform-claude-skills"
       }
+    },
+    "compound-engineering-plugin": {
+      "source": {
+        "source": "github",
+        "repo": "EveryInc/compound-engineering-plugin"
+      }
+    },
+    "playwright-skill": {
+      "source": {
+        "source": "github",
+        "repo": "lackeyjb/playwright-skill"
+      }
+    },
+    "21st-dev": {
+      "source": {
+        "source": "github",
+        "repo": "21st-dev/magic-mcp"
+      }
     }
   },
   "enabledPlugins": {
@@ -80,6 +98,9 @@
     "sharepoint@power-platform-claude-skills": true,
     "react@power-platform-claude-skills": true,
     "ai-models@power-platform-claude-skills": true,
-    "azure-web-apps@power-platform-claude-skills": true
+    "azure-web-apps@power-platform-claude-skills": true,
+    "21st@21st-dev": true,
+    "compound-engineering@compound-engineering-plugin": true,
+    "playwright-skill@playwright-skill": true
   }
 }
