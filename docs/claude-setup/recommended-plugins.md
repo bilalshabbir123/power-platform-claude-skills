@@ -85,3 +85,22 @@ From `power-platform-skills`: canvas-apps, code-apps-preview, model-apps, power-
 2. `claude plugin marketplace update` — pull updates (official marketplaces update automatically; community ones don't).
 3. `claude plugin disable <plugin>` — switch off without uninstalling, if a plugin gets in the way.
 4. `claude plugin details <plugin>` — what a plugin contains and its token cost.
+
+## Batch 2 (added 2026-11-21): design, writing, research and scraping
+
+Installed for all projects (user scope) and in the new-project template.
+
+| Tool | What it does | Install | When to use / notes |
+|---|---|---|---|
+| **REA** (morluto/rea) | "Reverse Engineer Anything": Claude inspects an app, API or binary without its source code. | `claude plugin marketplace add morluto/rea` then `claude plugin install rea@rea` | Working out how an undocumented API or a third-party app behaves. Only on software you're allowed to inspect. |
+| **Ponytail** (DietrichGebert/ponytail) | Rules that make Claude write only the code a task needs: reuse first, no new dependencies unless needed. `/ponytail-debt` lists shortcuts left for later, `/ponytail-help` gives a quick reference. | `claude plugin marketplace add DietrichGebert/ponytail` then `claude plugin install ponytail@ponytail` | Any coding project. Defaults kept: the task log stays local (`~/.config/ponytail/band/`), no webhook. Change with `/plugin configure ponytail@ponytail`. |
+| **Hallmark** (nutlope/hallmark) | Anti-"AI look" design skill. `hallmark audit` scores a UI (no edits), `hallmark redesign` rebuilds the layout keeping the text, `hallmark study` copies the style of a screenshot or URL. | `claude plugin marketplace add nutlope/hallmark` then `claude plugin install hallmark@hallmark` | Client-facing screens and sites. |
+| **Humanizer** (blader/humanizer) | Rewrites text to remove signs of AI writing. | `claude plugin marketplace add blader/humanizer` then `claude plugin install humanizer@humanizer` | Proposals, emails, LinkedIn posts: `/humanizer:humanizer` then paste the text. |
+| **Impeccable** (pbakaus/impeccable) | Frontend design skill with design commands (polish, audit, typography, colour). | `claude plugin marketplace add pbakaus/impeccable` then `claude plugin install impeccable@impeccable` | Run `/impeccable init` once per project. |
+| **UI UX Pro Max** (nextlevelbuilder) | Large design database: styles, colour palettes, font pairs, UX rules, chart types. | `claude plugin marketplace add nextlevelbuilder/ui-ux-pro-max-skill` then `claude plugin install ui-ux-pro-max@ui-ux-pro-max-skill` | Choosing a look for a new app or site. Its search script needs Python 3. |
+| **Last 30 Days** (mvanhorn/last30days-skill) | Researches a topic across Reddit, X, YouTube, Hacker News, news and the web for the last 30 days. | `claude plugin marketplace add https://github.com/mvanhorn/last30days-skill.git` (the short form failed here) then `claude plugin install last30days@last30days-skill` | "What are people saying about X?" Works with no keys (web only); the first run offers optional keys, stored in the keychain. |
+| **Scrapling** (D4Vinci/Scrapling) | Web scraping MCP server + skill: plain HTTP, stealth browser, JavaScript pages. | `python3.13 -m venv ~/.local/share/scrapling-venv`, `~/.local/share/scrapling-venv/bin/pip install "scrapling[ai]"`, then `claude mcp add --scope user scrapling -- ~/.local/share/scrapling-venv/bin/scrapling-mcp` | When normal fetch fails. Browser mode needs `~/.local/share/scrapling-venv/bin/scrapling install` once (downloads browsers). Respect each site's terms. |
+| **Diagram Design** | Business-style diagrams in Excalidraw. | Private repo (no open licence). | Architecture and process diagrams for proposals. |
+| **Onyx** | Not installed: probably onyx-dot-app/onyx, a self-hosted AI chat and company search platform (Docker), not a Claude skill. | — | Confirm which Onyx is meant. |
+
+Overlap: Hallmark, Impeccable, UI UX Pro Max and the official frontend-design all guide UI design. Name the one you want in the prompt ("use hallmark to audit this page") so they don't pull in different directions.
