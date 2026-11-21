@@ -59,6 +59,48 @@
         "source": "github",
         "repo": "21st-dev/magic-mcp"
       }
+    },
+    "rea": {
+      "source": {
+        "source": "github",
+        "repo": "morluto/rea"
+      }
+    },
+    "ponytail": {
+      "source": {
+        "source": "github",
+        "repo": "DietrichGebert/ponytail"
+      }
+    },
+    "hallmark": {
+      "source": {
+        "source": "github",
+        "repo": "nutlope/hallmark"
+      }
+    },
+    "humanizer": {
+      "source": {
+        "source": "github",
+        "repo": "blader/humanizer"
+      }
+    },
+    "impeccable": {
+      "source": {
+        "source": "github",
+        "repo": "pbakaus/impeccable"
+      }
+    },
+    "ui-ux-pro-max-skill": {
+      "source": {
+        "source": "github",
+        "repo": "nextlevelbuilder/ui-ux-pro-max-skill"
+      }
+    },
+    "last30days-skill": {
+      "source": {
+        "source": "git",
+        "url": "https://github.com/mvanhorn/last30days-skill.git"
+      }
     }
   },
   "enabledPlugins": {
@@ -101,6 +143,13 @@
     "azure-web-apps@power-platform-claude-skills": true,
     "21st@21st-dev": true,
     "compound-engineering@compound-engineering-plugin": true,
-    "playwright-skill@playwright-skill": true
+    "playwright-skill@playwright-skill": true,
+    "hallmark@hallmark": true,
+    "humanizer@humanizer": true,
+    "impeccable@impeccable": true,
+    "last30days@last30days-skill": true,
+    "ponytail@ponytail": true,
+    "rea@rea": true,
+    "ui-ux-pro-max@ui-ux-pro-max-skill": true
   }
 }
