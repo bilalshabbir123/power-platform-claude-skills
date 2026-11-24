@@ -1,6 +1,6 @@
 # Lessons learned
 
-Real mistakes made while building and releasing an enterprise Power Apps code app (React + Dataverse + Power Automate), while building a personal-productivity code app on Dataverse, while building an offline field-service PWA on Azure (React + ASP.NET Core + Azure SQL), and while building this skills repo, what caused each one, and the skill or practice that now prevents it. Details are anonymised.
+Real mistakes made while building and releasing an enterprise Power Apps code app (React + Dataverse + Power Automate), while building a personal-productivity code app on Dataverse, while building an offline field-service PWA on Azure (React + ASP.NET Core + Azure SQL), while writing client proposals and technical summaries, and while building this skills repo, what caused each one, and the skill or practice that now prevents it. Details are anonymised.
 
 | # | What went wrong | Root cause | Prevented by |
 |---|---|---|---|
@@ -55,6 +55,18 @@ Real mistakes made while building and releasing an enterprise Power Apps code ap
 | 49 | Docs said Standard LRS, the storage account was GRS | SKU not checked after creation | `azure-low-cost-poc-hosting` |
 | 50 | Client's screen list left out the price list they had asked for in the demo | Requests spread across two meetings and a separate list | `pwa-client-requirements-clarification-doc` (mark "(proposed)" and ask) |
 | 51 | AI meeting recap stated things not quite said in the call | Recap used without checking the transcript | `pwa-client-requirements-clarification-doc` |
+| 52 | Proposal nearly sent with `£00,000` prices | Placeholders typed as numbers | `power-platform-proposal-and-technical-docs` (`[£TBC]` + pre-send search) |
+| 53 | Same proposal said 100 and 20 documents, 5 and 10 users, 60 and 40 checklist items | Each section written separately, no single source of numbers | `power-platform-proposal-and-technical-docs` (facts sheet) |
+| 54 | Phase rows added to ~9.5 days but the summary said 17-19 | Totals typed by hand | `power-platform-proposal-and-technical-docs` (sum in the generator) |
+| 55 | Running costs differed between two sections | Figures copied before an update | `power-platform-proposal-and-technical-docs` |
+| 56 | Reissued proposal still carried old-approach items (Copilot Studio licence, "exclusively Microsoft", no-MFA service account) | Old document patched instead of rewritten | `power-platform-proposal-and-technical-docs` (rewrite from the facts sheet) |
+| 57 | RfP asked for UK/EU data residency; the proposed AI plan stores data in the US | Plan checked against the product, not the tier sold | `power-platform-proposal-and-technical-docs` (vendor confirmation + client acceptance in writing) |
+| 58 | Draft promised audit compliance on a plan with no audit log | Top-tier features assumed | `power-platform-proposal-and-technical-docs` (licence/plan check) |
+| 59 | Client contact couldn't follow deliverable tables; four rounds of "I don't understand" | Technical wording, abstract steps | `power-platform-proposal-and-technical-docs` (plain words + one example) |
+| 60 | 20-row component list repeated itself | Same thing named three ways (vault/catalogue, forms/lists/flows) | `power-platform-proposal-and-technical-docs` (one merged table with days) |
+| 61 | "See section 13" pointed at the wrong section | Section inserted, references not rechecked | `power-platform-proposal-and-technical-docs` |
+| 62 | Generated .docx body text in Times New Roman | Font set on headings only | `power-platform-proposal-and-technical-docs` (font on every run + Normal style) |
+| 63 | "3-page" summary longer in Word than in the preview | Page count taken from Quick Look | `power-platform-proposal-and-technical-docs` (Word PDF export + `pdfinfo`) |
 
 ## Working rules that came out of this
 
@@ -69,3 +81,4 @@ Real mistakes made while building and releasing an enterprise Power Apps code ap
 9. Link third-party code instead of copying it when its licence restricts redistribution.
 10. Keep two tenants apart on one machine: wrap every CLI call in a script that selects and checks the account/environment, and restores it afterwards.
 11. Free cloud tiers need an owner: someone scales up before a demo and back down after, and nobody flips a one-way billing setting "just for the demo".
+12. Every client document is generated from one facts sheet by a script, and its numbers, totals, plan features and page count are checked before it is sent.

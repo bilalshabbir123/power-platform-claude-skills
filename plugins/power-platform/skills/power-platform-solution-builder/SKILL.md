@@ -30,6 +30,7 @@ description: One entry point for building on Microsoft Power Platform and Micros
 | Background work: triggers, approvals, emails, Teams, schedules | **Power Automate cloud flow** | `references/power-automate.md` |
 | Animated UI (text effects, backgrounds, micro-interactions) in any React app | **React Bits** | `references/react-bits-ui.md` → skill `react-bits-animated-ui` |
 | A model fine-tuned on your own data, called from a flow or app | **Unsloth + OpenAI-compatible endpoint + custom connector** | `references/custom-llm-unsloth.md` → skill `unsloth-custom-llm-for-power-platform` |
+| A proposal, RfP response, technical summary or handover document for the client | **Word document from a facts sheet** | skill `power-platform-proposal-and-technical-docs` |
 
 Read **only** the reference files for the products in the request. Each reference says when to hand over to a focused skill.
 

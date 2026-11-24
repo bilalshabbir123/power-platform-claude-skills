@@ -1,7 +1,7 @@
 {
   "name": "power-platform",
   "description": "Power Apps code apps, canvas apps, Power Automate, Dataverse security and solution ALM, plus a hub skill that routes any Power Platform / Microsoft 365 request to the right technology.",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "author": { "name": "bilalshabbir123" },
   "repository": "https://github.com/bilalshabbir123/power-platform-claude-skills",
   "keywords": ["power-platform","power-apps","code-apps","canvas-apps","power-automate","dataverse","alm"]

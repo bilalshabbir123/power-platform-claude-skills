@@ -16,6 +16,7 @@ Every skill solves **one specific problem**, explains the mistake that caused it
 | | [`power-automate-dataverse-triggered-flows`](plugins/power-platform/skills/power-automate-dataverse-triggered-flows/) | Flows that duplicate, fail on long text or silently stop |
 | | [`dataverse-security-roles-for-code-apps`](plugins/power-platform/skills/dataverse-security-roles-for-code-apps/) | Least-privilege roles, no self-promotion, role scripts that work |
 | | [`power-platform-solution-release-alm`](plugins/power-platform/skills/power-platform-solution-release-alm/) | Managed solution releases to production without surprises |
+| | [`power-platform-proposal-and-technical-docs`](plugins/power-platform/skills/power-platform-proposal-and-technical-docs/) | Proposals, RfP responses and short technical summaries in Word with consistent numbers, true plan claims and plain words |
 | **sharepoint** | [`sharepoint-spfx-web-parts`](plugins/sharepoint/skills/sharepoint-spfx-web-parts/) | SPFx on the Heft toolchain, data access, permissions, throttling, CI |
 | **react** | [`react-bits-animated-ui`](plugins/react/skills/react-bits-animated-ui/) | React Bits animations that are accessible, fast, CSP-safe and licence-compliant |
 | **ai-models** | [`unsloth-custom-llm-for-power-platform`](plugins/ai-models/skills/unsloth-custom-llm-for-power-platform/) | Fine-tune with Unsloth and call the model from Power Platform safely |
